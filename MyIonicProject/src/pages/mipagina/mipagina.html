@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mi página - Cálculo del IMC</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>CALCULO DEL IMC</h3>
+  <label for="peso">PESO (kg)</label>
+  <input type="text" size="4" id="estatura" [(ngModel)]="persona.peso">
+  <br>
+  <label for="estatura">ESTATURA (m)</label>
+  <input type="text" size="4" id="estatura" [(ngModel)]="persona.estatura">
+  <br>
+  <p>
+    <button ion-button (click)="calcularIMC()">Calcular IMC</button>
+  </p>
+  <label for="resultado">Resultado</label>
+  <input type="text" size="4" id="resultado" value={{resultado}} readonly>
+
+
+</ion-content>
