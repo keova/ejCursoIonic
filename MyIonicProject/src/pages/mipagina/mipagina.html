@@ -11,6 +11,8 @@
 <ion-content padding>
 
   <h3>CALCULO DEL IMC</h3>
+  <div *ngIf="!personaCargada"><p><img src="assets/imgs/cargando-gif-animado-12.gif"></p></div>
+  <div *ngIf="personaCargada">
   <label for="peso">PESO (kg)</label>
   <input type="text" size="4" id="estatura" [(ngModel)]="persona.peso">
   <br>
@@ -23,5 +25,15 @@
   <label for="resultado">Resultado</label>
   <input type="text" size="4" id="resultado" value={{resultado}} readonly>
 
+  <button ion-button (click)="showAlert()">Alerta</button>
 
+
+  
+</div>  
+
+<div *ngIf="listaPersonas">
+  <ul *ngFor="let unaPersona of listaPersonas">
+    <li (click)=mostrarPersona(unaPersona)>{{unaPersona.nombre}} - {{unaPersona.peso}}Kg  - {{unaPersona.estatura}}m</li>
+  </ul>
+</div>
 </ion-content>
