@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Itunes</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <h3>ITUNES</h3>
+    <input type="text" size="30" id="txtBusqueda" [(ngModel)]="txtABuscar">
+    <br>
+    <p>
+      <button ion-button (click)="buscarEnItunes()">Buscar</button>
+    </p>
+    <div *ngIf="enEspera"><p><img src="assets/imgs/cargando-gif-animado-12.gif"></p></div>
+    <div *ngIf="mensaje_salida">
+      {{mensaje_salida}}
+    </div>
+    <div *ngIf="listaCanciones">
+        <ion-list class="list-avatar-page">
+            <ion-item-sliding *ngFor="let cancion of listaCanciones" id="{{cancion.trackid}}">
+              <ion-item>
+                <ion-avatar item-start>
+                    <img src="{{cancion.artworkUrl100}}">
+                </ion-avatar>
+                <h2>{{cancion.trackName}}</h2>
+                <h3>{{cancion.artistName}}</h3>    
+                <ion-note item-end>{{cancion.trackPrice}}{{cancion.currency}}</ion-note>
+              </ion-item>
+              <ion-item-options>
+                  <button ion-button color="light" icon-start>
+                    <ion-icon name="ios-more"></ion-icon>
+                    More
+                  </button>
+                  <button ion-button color="primary" icon-start>
+                    <ion-icon name="text"></ion-icon>
+                    Text
+                  </button>
+                  <button ion-button color="secondary" icon-start>
+                    <ion-icon name="call"></ion-icon>
+                    Call
+                  </button>
+              </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </div>
+  
+  </ion-content>

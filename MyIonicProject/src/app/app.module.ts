@@ -6,10 +6,11 @@ import { MyApp } from './app.component';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
+import { MiPagina } from '../pages/mipagina/mipagina'; 
+import { Itunes } from '../pages/itunes/itunes';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { MiPagina } from '../pages/mipagina/mipagina';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     HelloIonicPage,
     ItemDetailsPage,
     ListPage, 
-    MiPagina
+    MiPagina,
+    Itunes
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
-    MiPagina
+    MiPagina,
+    Itunes
   ],
   providers: [
     StatusBar,

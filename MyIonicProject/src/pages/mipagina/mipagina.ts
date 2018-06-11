@@ -10,14 +10,15 @@ import { AlertController } from 'ionic-angular';
   providers: [PersonaService] // aqui pongo los servicio que usará el componente
 })
 export class MiPagina {
-  private persona : Persona;
+  private persona : Persona;  
   private peso : number;
   private estatura : number;
   private resultado : number;
   private personaCargada : boolean;
   private listaPersonas : Persona[];
 
-  constructor(persona_service : PersonaService, public alertCtrl: AlertController) { // ponemos los services que necesita
+  constructor(persona_service : PersonaService, 
+            public alertCtrl: AlertController) { // ponemos los services que necesita (injeccion de dependencias)
     this.estatura = 1.89;
     this.peso = 85;
     //this.persona = persona_service.getPersona();
