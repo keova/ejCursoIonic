@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{cancion.trackName}}</ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="cerrarModal()">
+              <span ion-text color="primary">Cancel</span>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+  
+  
+<ion-content padding>
+    <img src="{{cancion.artworkUrl100}}">
+    <h2>{{cancion.artistName}}</h2>
+    <p>{{cancion.trackPrice}}{{cancion.currency}}</p>
+    <audio src="{{cancion.previewUrl}}" id="muestra"></audio>
+    <button ion-button color="primary" (click)="playMuestra()">
+      <ion-icon name="play"></ion-icon>
+      <ion-icon name="stop"></ion-icon>
+    </button>
+</ion-content>

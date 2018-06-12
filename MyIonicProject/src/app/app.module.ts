@@ -8,10 +8,13 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { MiPagina } from '../pages/mipagina/mipagina'; 
 import { Itunes } from '../pages/itunes/itunes';
+import { DetalleCancionM } from '../pages/detalleCancionM/detalleCancionM';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
+import { NetworkInterface } from '@ionic-native/network-interface';
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     ItemDetailsPage,
     ListPage, 
     MiPagina,
-    Itunes
+    Itunes,
+    DetalleCancionM
   ],
   imports: [
     BrowserModule,
@@ -34,11 +38,14 @@ import { HttpClientModule } from '@angular/common/http';
     ItemDetailsPage,
     ListPage,
     MiPagina,
-    Itunes
+    Itunes,
+    DetalleCancionM
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    NetworkInterface,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

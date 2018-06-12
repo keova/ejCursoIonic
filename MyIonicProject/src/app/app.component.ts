@@ -6,6 +6,7 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
 import { MiPagina } from '../pages/mipagina/mipagina';
 import { Itunes } from '../pages/itunes/itunes';
+import { DetalleCancionM } from '../pages/detalleCancionM/detalleCancionM';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,6 +37,7 @@ export class MyApp {
       { title: 'My First List', component: ListPage },
       { title: 'Mi primera page', component: MiPagina },
       { title: 'Itunes', component: Itunes}
+      //{ title: 'Detalle canción', component: DetalleCancionM}
     ];
   }
 
