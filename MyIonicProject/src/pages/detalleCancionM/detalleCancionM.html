@@ -15,8 +15,10 @@
     <h2>{{cancion.artistName}}</h2>
     <p>{{cancion.trackPrice}}{{cancion.currency}}</p>
     <audio src="{{cancion.previewUrl}}" id="muestra"></audio>
-    <button ion-button color="primary" (click)="playMuestra()">
+    <button *ngIf="!sonandoMuestra" ion-button color="primary" (click)="playMuestra()">
       <ion-icon name="play"></ion-icon>
+    </button>
+    <button *ngIf="sonandoMuestra" ion-button color="primary" (click)="stopMuestra()">
       <ion-icon name="stop"></ion-icon>
     </button>
 </ion-content>
