@@ -7,9 +7,11 @@ import { ListPage } from '../pages/list/list';
 import { MiPagina } from '../pages/mipagina/mipagina';
 import { Itunes } from '../pages/itunes/itunes';
 import { DetalleCancionM } from '../pages/detalleCancionM/detalleCancionM';
+import { FormularioComponent } from '../pages/formulario/formulario';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -27,8 +29,27 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public storage: Storage
   ) {
+
+    this.storage.get("contadorAccesos").then(
+      (valorContador) => {
+        console.log("contador " + valorContador);
+        let contador : number = valorContador;
+        if (valorContador == null) {
+          contador = 0;
+        } 
+        if (contador%2 == 0) { // es par
+          this.nav.setRoot(HelloIonicPage);
+        } else { // es impar
+          this.nav.setRoot(Itunes);
+        }
+        this.storage.set("contadorAccesos", contador+1);
+        
+      });
+
+
     this.initializeApp();
 
     // set our app's pages
@@ -36,7 +57,8 @@ export class MyApp {
       { title: 'Hello Ionic', component: HelloIonicPage },
       { title: 'My First List', component: ListPage },
       { title: 'Mi primera page', component: MiPagina },
-      { title: 'Itunes', component: Itunes}
+      { title: 'Itunes', component: Itunes},
+      { title: 'Formulatio', component: FormularioComponent}
       //{ title: 'Detalle canción', component: DetalleCancionM}
     ];
   }
@@ -47,6 +69,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
     });
   }
 
@@ -55,5 +78,6 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
+    
   }
 }

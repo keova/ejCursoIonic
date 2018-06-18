@@ -9,13 +9,18 @@ import { ListPage } from '../pages/list/list';
 import { MiPagina } from '../pages/mipagina/mipagina'; 
 import { Itunes } from '../pages/itunes/itunes';
 import { DetalleCancionM } from '../pages/detalleCancionM/detalleCancionM';
+import { FormularioComponent } from '../pages/formulario/formulario';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { NetworkInterface } from '@ionic-native/network-interface';
-import { Network } from '@ionic-native/network';
-import { NativeAudio } from '@ionic-native/native-audio';
+//import { Network } from '@ionic-native/network';
+//import { NativeAudio } from '@ionic-native/native-audio';
+import { Media } from '@ionic-native/media';
+import { IonicStorageModule } from '@ionic/storage';
+import { FormsModule } from '@angular/forms';
+import { EqualValidator } from './validatorpwd.directive';
 
 @NgModule({
   declarations: [
@@ -25,12 +30,16 @@ import { NativeAudio } from '@ionic-native/native-audio';
     ListPage, 
     MiPagina,
     Itunes,
-    DetalleCancionM
+    DetalleCancionM,
+    FormularioComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    IonicStorageModule.forRoot(),
+    HttpClientModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,14 +49,17 @@ import { NativeAudio } from '@ionic-native/native-audio';
     ListPage,
     MiPagina,
     Itunes,
-    DetalleCancionM
+    DetalleCancionM,
+    FormularioComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     NetworkInterface,
-    Network,
-    NativeAudio,
+    //Network,
+    //NativeAudio,
+    Media, 
+    //MediaObject,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

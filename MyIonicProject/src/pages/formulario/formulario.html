@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Formulario</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+<!--aquí va nuestro formulario-->
+<!-- # define una variable-->
+<form #formulario_login="ngForm" (ngSubmit)="acceder(formulario_login.value, formulario_login.valid)">
+  <div>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="login.usuario" required pattern=".{4,}"></ion-input>
+    </ion-item>
+    <small [hidden]="!(formulario_login.submitted && !nombre.valid)">
+    Nombre de al menos 4 letras
+    </small>
+  </div>
+  <div>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="text" #pwd="ngModel" name="pwd" [(ngModel)]="login.pwd" required></ion-input>
+    </ion-item>
+    <small [hidden]="!(formulario_login.submitted && !pwd.valid)">
+    Contraseña obligatoria
+    </small>
+  </div>
+  <div>
+    <ion-item>
+      <ion-label>Password repe</ion-label>
+      <!-- validateEqual es una directiva propia creada por nosotros en -->
+      <ion-input type="text" #pwd2="ngModel" name="pwd2" [(ngModel)]="login.pwdR" required validateEqual="pwd"></ion-input>
+    </ion-item>
+    <small [hidden]="!(formulario_login.submitted && !pwd2.valid)">
+    Repita la misma contraseña
+    </small>
+  </div>
+  <!--[disabled]=!(formulario_login.valid)-->
+  <button type="submit" ion-button >Acceder</button>
+  </form>
+
+
+</ion-content>

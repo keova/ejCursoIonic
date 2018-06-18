@@ -4,10 +4,9 @@ import { LoadingController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { Cancion } from '../../app/cancion.interface';
 import { ItunesService } from '../../app/itunes.service';
-import { Network } from '@ionic-native/network';
 import { DetalleCancionM } from '../detalleCancionM/detalleCancionM';
 import { AlertController } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -23,20 +22,25 @@ export class Itunes {
     private enEspera : boolean;
     private loading : any;
 
+
     constructor(private itunes_service : ItunesService, 
                 public loadingCtrl: LoadingController,  
-                private network: Network,
                 public modalCtrl: ModalController,
-                public alertCtrl: AlertController) { // ponemos los services que necesita (injeccion de dependencias)
+                public alertCtrl: AlertController,
+                public storage: Storage) { // ponemos los services que necesita (injeccion de dependencias)
         this.enEspera = false;
-        console.log("tipo de red " + this.network.type);
+
     }
+
+ 
 
     buscarEnItunes () : void {
         this.loading = this.loadingCtrl.create({
             content: 'Buscando...'
           });
         this.loading.present();
+        
+        this.storage.set("terminoBusqueda", this.txtABuscar);
         
         //this.enEspera = true;
         this.listaCanciones = null;
@@ -63,9 +67,9 @@ export class Itunes {
         errorBusqueda = <HttpErrorResponse>error;
         console.log("error " + errorBusqueda);
         console.log(errorBusqueda.error);
-      console.log(errorBusqueda.name);
-      console.log(errorBusqueda.message);
-      console.log(errorBusqueda.status);
+        console.log(errorBusqueda.name);
+        console.log(errorBusqueda.message);
+        console.log(errorBusqueda.status);
         this.mensaje_salida = "Se ha producido un error. Inténtelo más tarde.";
         //this.enEspera = false;
         this.loading.dismiss();
@@ -75,9 +79,10 @@ export class Itunes {
         this.enEspera = false;
     }
 
-    playMuestra(muestraCancion : string) {
+    playMuestra( cancion: Cancion) {
     //    document.getElementById("muestra").src = muestraCancion;
-     console.log("estoy en playMuestra");
+     console.log("estoy en playMuestra " + cancion.previewUrl );
+   //  previewUr
     }
 
     mostrarDetalles(indiceCancion : number) : void {
@@ -107,5 +112,15 @@ export class Itunes {
             ]
           });
           confirm.present();
+    }
+
+
+
+    consulta () {
+        console.log("en consulta");
+        let resultadoConsulta : String;
+        this.storage.get("terminoBusqueda").then(
+            (val) => {resultadoConsulta = val; console.log(resultadoConsulta)});
+
     }
 }

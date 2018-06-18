@@ -15,6 +15,9 @@
     <p>
       <button ion-button (click)="buscarEnItunes()">Buscar</button>
     </p>
+    <p>
+      <button ion-button (click)="consulta()"><ion-icon name="search"></ion-icon></button>
+    </p>
     <div *ngIf="enEspera"><p><img src="assets/imgs/cargando-gif-animado-12.gif"></p></div>
     <div *ngIf="mensaje_salida">
       {{mensaje_salida}}
@@ -27,7 +30,8 @@
                     <img src="{{cancion.artworkUrl100}}">
                 </ion-avatar>
                 <h2>{{cancion.trackName}}</h2>
-                <h3>{{cancion.artistName}}</h3>    
+                <h3>{{cancion.artistName}}</h3> 
+                <audio src={{cancion.previewUrl}} type="audio/mpeg" preload="preload"></audio>   
                 <ion-note item-end>{{cancion.trackPrice}}{{cancion.currency}}</ion-note>
               </ion-item>
               <ion-item-options>
@@ -35,7 +39,7 @@
                     <ion-icon name="ios-more"></ion-icon>
                     Detalles
                   </button>
-                  <button ion-button color="primary" > <!--(click)="playMuestra({{cancion.previewUrl}})"-->
+                  <button ion-button color="primary" (click)="playMuestra(cancion)"> <!--(click)="playMuestra({{cancion.previewUrl}})"-->
                     <ion-icon name="play"></ion-icon>
                     Muestra
                   </button>
