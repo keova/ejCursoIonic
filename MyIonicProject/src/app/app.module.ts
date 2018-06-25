@@ -10,6 +10,7 @@ import { MiPagina } from '../pages/mipagina/mipagina';
 import { Itunes } from '../pages/itunes/itunes';
 import { DetalleCancionM } from '../pages/detalleCancionM/detalleCancionM';
 import { FormularioComponent } from '../pages/formulario/formulario';
+import { MapawebPage } from '../pages/mapaweb/mapaweb';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,6 +22,7 @@ import { Media } from '@ionic-native/media';
 import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
 import { EqualValidator } from './validatorpwd.directive';
+import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { EqualValidator } from './validatorpwd.directive';
     ItemDetailsPage,
     ListPage, 
     MiPagina,
+    MapawebPage,
     Itunes,
     DetalleCancionM,
     FormularioComponent,
@@ -49,6 +52,7 @@ import { EqualValidator } from './validatorpwd.directive';
     ListPage,
     MiPagina,
     Itunes,
+    MapawebPage,
     DetalleCancionM,
     FormularioComponent
   ],
@@ -56,6 +60,7 @@ import { EqualValidator } from './validatorpwd.directive';
     StatusBar,
     SplashScreen,
     NetworkInterface,
+    Geolocation,
     //Network,
     //NativeAudio,
     Media, 

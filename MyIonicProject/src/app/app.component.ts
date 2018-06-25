@@ -8,6 +8,7 @@ import { MiPagina } from '../pages/mipagina/mipagina';
 import { Itunes } from '../pages/itunes/itunes';
 import { DetalleCancionM } from '../pages/detalleCancionM/detalleCancionM';
 import { FormularioComponent } from '../pages/formulario/formulario';
+import { MapawebPage } from '../pages/mapaweb/mapaweb';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,7 +31,8 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public storage: Storage
+    public storage: Storage,
+
   ) {
 
     this.storage.get("contadorAccesos").then(
@@ -58,7 +60,8 @@ export class MyApp {
       { title: 'My First List', component: ListPage },
       { title: 'Mi primera page', component: MiPagina },
       { title: 'Itunes', component: Itunes},
-      { title: 'Formulatio', component: FormularioComponent}
+      { title: 'Formulatio', component: FormularioComponent},
+      { title: 'Mapa', component: MapawebPage}
       //{ title: 'Detalle canción', component: DetalleCancionM}
     ];
   }
